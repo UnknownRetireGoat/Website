@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCRIPT HUB</title>
+    <title>RetireGoat's GitHub</title>
     <style>
-        /* Change Background Image */
+        /* Background Image */
         body {
-            background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2024/10/Dragon-Ball-Daima-Goku-Weak.jpg?w=1024'); /* Replace with your image link */
+            background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2024/10/Dragon-Ball-Daima-Goku-Weak.jpg');
             background-size: cover;
             background-position: center;
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
-        
+
         /* Main Container */
         .container {
             height: 100vh;
@@ -23,7 +24,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
         }
 
         /* Title */
@@ -38,19 +38,38 @@
             margin-bottom: 30px;
         }
 
-        /* Button */
+        /* Button Styles */
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
         .button {
             padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.2rem;
             transition: background-color 0.3s;
         }
 
-        .button:hover {
+        /* Blue GitHub Button */
+        .github-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .github-btn:hover {
             background-color: #0056b3;
+        }
+
+        /* Black Download Button */
+        .download-btn {
+            background-color: black;
+            color: white;
+        }
+
+        .download-btn:hover {
+            background-color: #333;
         }
 
         /* Footer */
@@ -65,19 +84,25 @@
 <body>
 
     <div class="container">
-        <!-- Title (Main Text) -->
+        <!-- Title -->
         <h1 class="title">Welcome to My GitHub Page</h1>
 
-        <!-- Subtitle (Secondary Text) -->
-        <p class="subtitle">Welcome To My Script Hub Notingh here to Show</p>
+        <!-- Subtitle -->
+        <p class="subtitle">Download my script or visit my GitHub for more projects!</p>
 
-        <!-- Button Link -->
-        <a href="https://github.com/your-username" class="button">Visit My GitHub</a>
+        <!-- Button Container -->
+        <div class="button-container">
+            <!-- GitHub Button -->
+            <a href="https://github.com/your-username" class="button github-btn">Visit My GitHub</a>
+
+            <!-- Download Button -->
+            <a href="https://raw.githubusercontent.com/your-username/your-repository/main/your-script.lua" class="button download-btn" download>Download Script</a>
+        </div>
     </div>
 
-    <!-- Footer Text -->
+    <!-- Footer -->
     <div class="footer">
-        <p>Created with ❤️ by [RetireGoat]</p>
+        <p>Created with ❤️ by RetireGoat</p>
     </div>
 
 </body>
