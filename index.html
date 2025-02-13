@@ -3,12 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Your GitHub Page</title>
+    <style>
+        /* Change Background Image */
+        body {
+            background-image: url('your-image-link.jpg'); /* Replace with your image link */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Main Container */
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Title */
+        .title {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* Subtitle */
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* Button */
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a test page.</p>
-    <img src="https://via.placeholder.com/300" alt="Sample Image">
-    <p><a href="https://www.github.com">Visit GitHub</a></p>
+
+    <div class="container">
+        <!-- Title (Main Text) -->
+        <h1 class="title">Welcome to My GitHub Page</h1>
+
+        <!-- Subtitle (Secondary Text) -->
+        <p class="subtitle">This is a customizable page where you can showcase your projects, skills, and more!</p>
+
+        <!-- Button Link -->
+        <a href="https://github.com/your-username" class="button">Visit My GitHub</a>
+    </div>
+
+    <!-- Footer Text -->
+    <div class="footer">
+        <p>Created with ❤️ by [Your Name]</p>
+    </div>
+
 </body>
 </html>
