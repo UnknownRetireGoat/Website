@@ -16,11 +16,33 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            height: 100vh;
+            overflow-y: auto; /* Allows scrolling */
+            scrollbar-width: thick; /* Makes scrollbar thick */
+            scrollbar-color: black gray; /* Scrollbar colors */
+        }
+
+        /* Custom Scrollbar (For Chrome, Edge, Safari) */
+        body::-webkit-scrollbar {
+            width: 12px; /* Thick scrollbar */
+        }
+
+        body::-webkit-scrollbar-track {
+            background: gray; /* Track color */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: black; /* Scrollbar color */
+            border-radius: 6px;
         }
 
         /* Main Container */
         .container {
             padding: 50px 20px;
+            min-height: 110vh; /* Slightly bigger than viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         /* Title */
@@ -59,8 +81,8 @@
 
         /* Force Discord Button on New Line */
         .discord-button {
-            display: block; /* Makes it go below */
-            margin-top: 20px; /* Space between the rows */
+            display: block;
+            margin-top: 20px;
         }
 
     </style>
