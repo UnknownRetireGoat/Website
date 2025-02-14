@@ -10,18 +10,17 @@
             background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2024/10/Dragon-Ball-Daima-Goku-Weak.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Keeps background still while scrolling */
+            background-attachment: fixed;
             color: white;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
-            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
         /* Main Container */
         .container {
-            padding: 50px 20px; /* Adds spacing to allow scrolling */
+            padding: 50px 20px;
         }
 
         /* Title */
@@ -58,26 +57,12 @@
             background-color: #333;
         }
 
-        /* Section Styling */
-        .section {
-            margin: 100px auto;
-            max-width: 800px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
+        /* Force Discord Button on New Line */
+        .discord-button {
+            display: block; /* Makes it go below */
+            margin-top: 20px; /* Space between the rows */
         }
 
-        /* Footer */
-        .footer {
-            margin-top: 50px;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
     </style>
 </head>
 <body>
@@ -89,38 +74,16 @@
         <!-- Subtitle -->
         <p class="subtitle">Download my script, visit my GitHub, or join my Discord!</p>
 
-        <!-- Button Container -->
+        <!-- Button Container (GitHub + Download) -->
         <div class="button-container">
-            <!-- GitHub Button -->
             <a href="https://github.com/UnknownRetireGoat" class="button">Visit My GitHub</a>
-
-            <!-- Dropbox Download Button -->
             <a href="https://www.dropbox.com/s/xyz123/Auto%20Broly%20v2.0.txt?dl=1" class="button">Download Script</a>
+        </div>
 
-            <!-- Discord Button -->
+        <!-- New Line for Discord Button -->
+        <div class="discord-button">
             <a href="https://discord.gg/a2qgbBEV" class="button">Join My Discord</a>
         </div>
-
-        <!-- Extra Sections to Allow Scrolling -->
-        <div class="section">
-            <h2>About My Scripts</h2>
-            <p>My scripts are designed for smooth automation and optimized for performance. Explore my GitHub for more details.</p>
-        </div>
-
-        <div class="section">
-            <h2>How to Use the Script</h2>
-            <p>Follow the instructions in the README file included with the download. If you need help, reach out on GitHub.</p>
-        </div>
-
-        <div class="section">
-            <h2>FAQ</h2>
-            <p>Have questions? Check out my GitHub Issues section for answers or to report problems.</p>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <p>Created with ❤️ by RetireGoat</p>
     </div>
 
 </body>
