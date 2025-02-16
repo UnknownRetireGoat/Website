@@ -20,7 +20,7 @@
             align-items: center;
             flex-direction: column;
             text-align: center;
-            overflow: hidden;
+            overflow-y: auto; /* Make the entire body scrollable */
             padding: 20px;
         }
         .frame {
@@ -29,8 +29,6 @@
             border-radius: 10px;
             border: 3px solid cyan;
             display: inline-block;
-            max-height: 80vh;
-            overflow-y: auto;
             animation: borderGlow 4s infinite alternate;
         }
         @keyframes borderGlow {
