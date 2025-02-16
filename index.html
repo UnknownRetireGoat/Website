@@ -5,82 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Page</title>
     <style>
-        /* Background Animation */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            background-image: url('https://comicbook.com/wp-content/uploads/sites/4/2024/10/Dragon-Ball-Daima-Goku-Weak.jpg');
+            font-family: Arial, sans-serif;
+            background: url('https://motionbgs.com/media/1397/goku-ultra-instinct_2.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            height: 100vh;
+            height: 150vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             text-align: center;
-            overflow-y: auto; /* Enables smooth scrolling */
-            animation: moveBackground 10s infinite alternate linear;
+            overflow-y: auto;
         }
-
-        @keyframes moveBackground {
-            0% { background-position: center top; }
-            100% { background-position: center bottom; }
-        }
-
-        /* Text Styling */
-        h1 {
-            font-size: 3em;
-            color: white;
-            text-shadow: 2px 2px 10px black;
-        }
-
-        p {
-            font-size: 1.2em;
-            color: white;
-            text-shadow: 1px 1px 5px black;
-        }
-
-        /* Button Styling */
-        .button-container {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            background-color: black;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.2em;
-            border-radius: 8px;
-            transition: 0.3s;
+        .frame {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid white;
             display: inline-block;
         }
-
-        .btn:hover {
-            background-color: white;
-            color: black;
-        }
-
-        /* Discord Button Below */
-        .discord-btn {
+        .buttons {
             margin-top: 20px;
         }
-
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            color: white;
+            background: black;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: transform 0.2s, background 0.3s;
+            animation: pulse 2s infinite alternate;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                background: black;
+            }
+            100% {
+                transform: scale(1.05);
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
     </style>
 </head>
 <body>
-
-    <h1>Welcome to My GitHub Page</h1>
-    <p>Download my script, visit my GitHub, or join my Discord!</p>
-
-    <!-- Buttons -->
-    <div class="button-container">
-        <a href="https://github.com/UnknownRetireGoat" class="btn">Visit My GitHub</a>
-        <a href="https://www.dropbox.com/preview/Auto%20Broly%20v2.0.txt?context=content_suggestions&role=personal" class="btn">Download Script</a>
+    <div class="frame">
+        <h1 style="color: white;">Welcome to My GitHub Page</h1>
+        <p style="color: white;">Download my script, visit my GitHub, or join my Discord!</p>
+        <div class="buttons">
+            <a href="https://github.com/UnknownRetireGoat" class="btn">Visit My GitHub</a>
+            <a href="https://www.dropbox.com/preview/Auto%20Broly%20v2.0.txt?context=content_suggestions&role=personal" class="btn">Download Script</a>
+        </div>
+        <div class="buttons">
+            <a href="https://discord.gg/a2qgbBEV" class="btn">Join My Discord</a>
+        </div>
     </div>
-
-    <!-- Discord Button Below -->
-    <a href="https://discord.gg/a2qgbBEV" class="btn discord-btn">Join My Discord</a>
-
 </body>
 </html>
