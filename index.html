@@ -23,15 +23,14 @@
             overflow: hidden;
             padding: 20px;
         }
-        .scrollable-container {
-            max-height: 80vh;
-            overflow-y: auto;
-            width: 100%;
-            padding: 20px;
+        .frame {
             background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
             border-radius: 10px;
             border: 3px solid cyan;
             display: inline-block;
+            max-height: 80vh;
+            overflow-y: auto;
             animation: borderGlow 4s infinite alternate;
         }
         @keyframes borderGlow {
@@ -97,7 +96,7 @@
     </style>
 </head>
 <body>
-    <div class="scrollable-container">
+    <div class="frame">
         <h1 style="color: white;">Welcome to My GitHub Page</h1>
         <p style="color: white;">Download my script, visit my GitHub, or join my Discord!</p>
         <div class="buttons">
