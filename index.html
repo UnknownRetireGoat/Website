@@ -11,24 +11,31 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            background: url('https://images.hdqwalls.com/wallpapers/goku-artistic-fusion-legacy-7b.jpg') no-repeat center center fixed;
-            background-size: cover;
-            height: 101vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            overflow-y: hidden;
+            body {
+    font-family: Arial, sans-serif;
+    background: url('https://images.hdqwalls.com/wallpapers/goku-artistic-fusion-legacy-7b.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 110vh; /* Adjust this to control scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    overflow-y: auto; /* This allows scrolling */
+}
+
         }
         .frame {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            border: 3px solid cyan;
-            display: inline-block;
-            animation: borderGlow 4s infinite alternate;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px; /* Reduced padding for mobile */
+      border-radius: 10px;
+      border: 3px solid cyan;
+      display: inline-block;
+      animation: borderGlow 2s infinite alternate;
+      width: 90%; /* Makes it adjust to different screen sizes */
+      max-width: 400px; /* Limits max size for larger screens */
+    }
+
         }
         @keyframes borderGlow {
             0% {
