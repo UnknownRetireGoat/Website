@@ -68,20 +68,25 @@
     <h2>Login Here</h2>
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
+    <!-- Simulated GitHub Login Button -->
     <button class="login-button" id="loginButton">Login</button>
 </div>
 
 <script>
     document.getElementById('loginButton').addEventListener('click', function() {
+        // Simulate GitHub OAuth login success (you'll replace this with real authentication)
+        alert('Simulating GitHub login...');  // This simulates the login process.
+
+        // Once the user is authenticated (simulated for now), we can hide the login frame
         var loginFrame = document.getElementById('loginFrame');
         
         // Apply the "hidden" class to start the animation
         loginFrame.classList.add('hidden');
         
-        // Optionally, you can also add an event listener for the animation end to do something after the animation
+        // Optionally, add an event listener for when the transition ends
         loginFrame.addEventListener('transitionend', function() {
-            // After the animation is done, you can hide the element completely or perform any other actions
-            loginFrame.style.display = 'none'; // This hides the login frame completely after the animation
+            // After animation, hide the element
+            loginFrame.style.display = 'none'; // Hides the login frame completely after animation
         });
     });
 </script>
