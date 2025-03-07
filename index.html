@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Page</title>
 <style>
+    /* Import Fredoka One font */
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
     body {
         background-image: url('https://a-static.besthdwallpaper.com/sunset-dusk-wallpaper-1280x800-88265_3.jpg');
         background-size: cover;
@@ -13,8 +16,26 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        position: relative; /* To position the text label */
+        position: relative;
     }
+    
+    /* Style for the Home button */
+    .home-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: transparent;
+        color: white;
+        font-family: 'Fredoka One', sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        display: none; /* Start with it hidden */
+        text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black; /* Stroke effect */
+    }
+
     .login-frame {
         height: 400px;
         background-color: rgba(0, 0, 0, 0.7);
@@ -23,10 +44,9 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         text-align: center;
         width: 300px;
-        opacity: 1;
-        transform: scale(1);
-        transition: transform 0.5s ease, opacity 0.5s ease;
+        transition: opacity 0.5s ease;
     }
+
     .login-frame h2 {
         font-size: 18px;
         background-color: rgb(75, 227, 181);
@@ -35,17 +55,20 @@
         padding: 5px;
         border-radius: 5px;
     }
+
     input {
-        outline: none;
         box-shadow: none;
-        width: 100%;
+        width: 90%;
         margin-bottom: 10px;
         padding: 8px;
         border: none;
-        border-bottom: 2px solid rgb(50, 50, 50);
+        border-bottom: 2px solid rgb(0, 0, 0);
         background-color: transparent;
         color: white;
+        outline: none;
+        display: block;
     }
+
     .login-button {
         width: 100%;
         background-color: rgb(75, 227, 181);
@@ -55,85 +78,46 @@
         border-radius: 5px;
         cursor: pointer;
     }
+
     .login-button:hover {
         background-color: rgb(75, 227, 181);
-    }
-    .hidden {
-        transform: scale(0);
-        opacity: 0;
-    }
-    #profileName {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        font-size: 20px; /* Reduced size */
-        color: white;
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        z-index: 10; /* To make sure it stays on top */
-        -webkit-background-clip: text;
-        background-clip: text;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 1); /* More noticeable black stroke effect */
-    }
-    #profileLine {
-        position: absolute;
-        top: 40px; /* Adjust the position below the profile name */
-        left: 10px;
-        width: auto; /* Make the line length dynamic */
-        height: 2px;
-        background-color: black; /* Line color black */
-        opacity: 0.4; /* Set transparency to 0.4 */
-        z-index: 10; /* To make sure it stays on top */
     }
 </style>
 </head>
 <body>
-<div class="login-frame" id="loginFrame">
+
+<!-- Home Button, initially hidden -->
+<button class="home-button" id="homeButton" onclick="goHome()">Home</button>
+
+<div class="login-frame" id="login-frame">
     <h2>Login Here</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button class="login-button" id="loginButton">Login</button>
+    <button class="login-button" onclick="login()">Login</button>
 </div>
 
-<!-- Profile Name TextLabel -->
-<div id="profileName" style="display: none;">UnknownRetireGoat</div>
-<!-- Line Under Profile Name -->
-<div id="profileLine" style="display: none;"></div>
-
 <script>
-    // Simulating the login flow when the button is clicked
-    document.getElementById('loginButton').addEventListener('click', function() {
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
+    function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var loginFrame = document.getElementById("login-frame");
+        var homeButton = document.getElementById("homeButton");
 
-        // Check if the fields are filled out (Simulating the "successful login" check)
-        if (username !== "" && password !== "") {
-            // Simulate a successful GitHub login (For demo purposes)
-            alert("Successfully logged in with GitHub!");
-
-            // Hide the login frame with an animation
-            var loginFrame = document.getElementById('loginFrame');
-            loginFrame.classList.add('hidden');
-
-            // Show the profile name and line after the login
-            document.getElementById('profileName').style.display = 'block';
-            
-            // Adjust the width of the line to match the profile name length
-            var profileName = document.getElementById('profileName');
-            var profileLine = document.getElementById('profileLine');
-            profileLine.style.width = profileName.offsetWidth + 'px'; // Set width to match profile name
-
-            document.getElementById('profileLine').style.display = 'block';
-
-            // Optionally, you can add an event listener for the animation's end
-            loginFrame.addEventListener('transitionend', function() {
-                loginFrame.style.display = 'none';
-            });
-        } else {
-            // If the username and password are empty, show a warning
-            alert("Please enter your credentials.");
+        if (username && password) {
+            // Smoothly hide the login frame
+            loginFrame.style.opacity = 0; // Fade the login frame
+            setTimeout(function() {
+                loginFrame.style.display = "none"; // Completely hide the login frame
+                homeButton.style.display = "block"; // Show the Home button
+            }, 500); // Wait for fade effect to finish
         }
-    });
+    }
+
+    // Function to go home (you can modify this to add navigation functionality)
+    function goHome() {
+        alert("Going Home...");
+    }
 </script>
+
 </body>
 </html>
