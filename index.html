@@ -22,6 +22,9 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         text-align: center;
         width: 300px;
+        opacity: 1;
+        transform: scale(1);
+        transition: transform 0.5s ease, opacity 0.5s ease;
     }
     .login-frame h2 {
         font-size: 18px;
@@ -54,14 +57,33 @@
     .login-button:hover {
         background-color: rgb(75, 227, 181);
     }
+    .hidden {
+        transform: scale(0);
+        opacity: 0;
+    }
 </style>
 </head>
 <body>
-<div class="login-frame">
+<div class="login-frame" id="loginFrame">
     <h2>Login Here</h2>
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
-    <button class="login-button">Login</button>
+    <button class="login-button" id="loginButton">Login</button>
 </div>
+
+<script>
+    document.getElementById('loginButton').addEventListener('click', function() {
+        var loginFrame = document.getElementById('loginFrame');
+        
+        // Apply the "hidden" class to start the animation
+        loginFrame.classList.add('hidden');
+        
+        // Optionally, you can also add an event listener for the animation end to do something after the animation
+        loginFrame.addEventListener('transitionend', function() {
+            // After the animation is done, you can hide the element completely or perform any other actions
+            loginFrame.style.display = 'none'; // This hides the login frame completely after the animation
+        });
+    });
+</script>
 </body>
 </html>
