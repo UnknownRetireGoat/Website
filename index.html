@@ -13,6 +13,7 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        position: relative; /* To position the text label */
     }
     .login-frame {
         height: 400px;
@@ -61,38 +62,71 @@
         transform: scale(0);
         opacity: 0;
     }
+    #profileName {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 20px; /* Reduced size */
+        color: white;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        z-index: 10; /* To make sure it stays on top */
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 1); /* More noticeable black stroke effect */
+    }
+    #profileLine {
+        position: absolute;
+        top: 40px; /* Adjust the position below the profile name */
+        left: 10px;
+        width: auto; /* Make the line length dynamic */
+        height: 2px;
+        background-color: black; /* Line color black */
+        opacity: 0.4; /* Set transparency to 0.4 */
+        z-index: 10; /* To make sure it stays on top */
+    }
 </style>
 </head>
 <body>
 <div class="login-frame" id="loginFrame">
     <h2>Login Here</h2>
-    <!-- Username and Password Inputs -->
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button class="login-button" id="loginButton">Login</button>
 </div>
 
+<!-- Profile Name TextLabel -->
+<div id="profileName" style="display: none;">UnknownRetireGoat</div>
+<!-- Line Under Profile Name -->
+<div id="profileLine" style="display: none;"></div>
+
 <script>
     // Simulating the login flow when the button is clicked
     document.getElementById('loginButton').addEventListener('click', function() {
-        // Get the values of the username and password fields
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
 
         // Check if the fields are filled out (Simulating the "successful login" check)
         if (username !== "" && password !== "") {
             // Simulate a successful GitHub login (For demo purposes)
-            alert("Successfully logged in with GitHub!"); // This can be replaced with the actual GitHub OAuth call
+            alert("Successfully logged in with GitHub!");
 
-            // Proceed to hide the login frame with an animation
+            // Hide the login frame with an animation
             var loginFrame = document.getElementById('loginFrame');
-
-            // Apply the "hidden" class to start the animation
             loginFrame.classList.add('hidden');
+
+            // Show the profile name and line after the login
+            document.getElementById('profileName').style.display = 'block';
+            
+            // Adjust the width of the line to match the profile name length
+            var profileName = document.getElementById('profileName');
+            var profileLine = document.getElementById('profileLine');
+            profileLine.style.width = profileName.offsetWidth + 'px'; // Set width to match profile name
+
+            document.getElementById('profileLine').style.display = 'block';
 
             // Optionally, you can add an event listener for the animation's end
             loginFrame.addEventListener('transitionend', function() {
-                // After the animation finishes, you can hide it completely
                 loginFrame.style.display = 'none';
             });
         } else {
