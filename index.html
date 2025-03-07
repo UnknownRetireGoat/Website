@@ -66,28 +66,39 @@
 <body>
 <div class="login-frame" id="loginFrame">
     <h2>Login Here</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <!-- Simulated GitHub Login Button -->
+    <!-- Username and Password Inputs -->
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
     <button class="login-button" id="loginButton">Login</button>
 </div>
 
 <script>
+    // Simulating the login flow when the button is clicked
     document.getElementById('loginButton').addEventListener('click', function() {
-        // Simulate GitHub OAuth login success (you'll replace this with real authentication)
-        alert('Simulating GitHub login...');  // This simulates the login process.
+        // Get the values of the username and password fields
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
 
-        // Once the user is authenticated (simulated for now), we can hide the login frame
-        var loginFrame = document.getElementById('loginFrame');
-        
-        // Apply the "hidden" class to start the animation
-        loginFrame.classList.add('hidden');
-        
-        // Optionally, add an event listener for when the transition ends
-        loginFrame.addEventListener('transitionend', function() {
-            // After animation, hide the element
-            loginFrame.style.display = 'none'; // Hides the login frame completely after animation
-        });
+        // Check if the fields are filled out (Simulating the "successful login" check)
+        if (username !== "" && password !== "") {
+            // Simulate a successful GitHub login (For demo purposes)
+            alert("Successfully logged in with GitHub!"); // This can be replaced with the actual GitHub OAuth call
+
+            // Proceed to hide the login frame with an animation
+            var loginFrame = document.getElementById('loginFrame');
+
+            // Apply the "hidden" class to start the animation
+            loginFrame.classList.add('hidden');
+
+            // Optionally, you can add an event listener for the animation's end
+            loginFrame.addEventListener('transitionend', function() {
+                // After the animation finishes, you can hide it completely
+                loginFrame.style.display = 'none';
+            });
+        } else {
+            // If the username and password are empty, show a warning
+            alert("Please enter your credentials.");
+        }
     });
 </script>
 </body>
