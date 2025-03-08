@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 <style>
-    /* Import Fredoka One font */
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
+    /* General Body Styles */
     body {
         background-image: url('https://a-static.besthdwallpaper.com/sunset-dusk-wallpaper-1280x800-88265_3.jpg');
         background-size: cover;
@@ -16,79 +15,133 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        position: relative;
+        font-family: 'Fredoka One', sans-serif;
     }
     
-    /* Style for the Home button */
-    .home-button {
+    /* Login Page Styles */
+    .login-frame {
+        height: 280px;
+        width: 300px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        text-align: center;
+        transition: opacity 0.5s ease;
+    }
+    .login-frame h2 {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+    input {
+        width: 120px; /* Thinner width */
+        height: 32px; /* Fixed height */
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        outline: none;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    input:focus {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    .login-button {
+        width: 198px; /* Fixed width for the login button */
+        height: 32px; /* Fixed height */
+        padding: 10px;
+        background-color: #4BE3B5;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+    }
+    .login-button:hover {
+        background-color: #3AC99A;
+    }
+
+    /* Home Page (After Login) */
+    .home-page {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        width: 60%;
+        text-align: center;
+        animation: fadeIn 1s ease-out;
+    }
+    .home-page h1 {
+        font-size: 38px;
+        color: #fff;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+    .home-page p {
+        color: #ddd;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    .home-page button {
+        padding: 12px 20px;
+        background-color: #4BE3B5;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .home-page button:hover {
+        background-color: #3AC99A;
+    }
+
+    /* Keyframe for the fade-in effect */
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    
+    /* Navigation Bar Styles (for Home Page) */
+    .nav-bar {
         position: absolute;
         top: 20px;
         left: 20px;
-        background-color: transparent;
-        color: white;
-        font-family: 'Fredoka One', sans-serif;
-        font-weight: bold;
-        font-size: 18px;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        display: none; /* Start with it hidden */
-        text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black; /* Stroke effect */
-    }
-
-    .login-frame {
-        height: 400px;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        text-align: center;
-        width: 300px;
-        transition: opacity 0.5s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
-
-    .login-frame h2 {
-        font-size: 18px;
-        background-color: rgb(75, 227, 181);
+    .nav-bar a {
         color: white;
-        margin: 0 0 20px;
-        padding: 5px;
+        font-size: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px;
         border-radius: 5px;
+        transition: background-color 0.3s ease;
     }
-
-    input {
-        box-shadow: none;
-        width: 90%;
-        margin-bottom: 10px;
-        padding: 8px;
-        border: none;
-        border-bottom: 2px solid rgb(0, 0, 0);
-        background-color: transparent;
-        color: white;
-        outline: none;
-        display: block;
-    }
-
-    .login-button {
-        width: 100%;
-        background-color: rgb(75, 227, 181);
-        color: white;
-        border: none;
-        padding: 8px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .login-button:hover {
-        background-color: rgb(75, 227, 181);
+    .nav-bar a:hover {
+        background-color: #4BE3B5;
     }
 </style>
 </head>
 <body>
 
-<!-- Home Button, initially hidden -->
-<button class="home-button" id="homeButton" onclick="goHome()">Home</button>
-
+<!-- Login Frame -->
 <div class="login-frame" id="login-frame">
     <h2>Login Here</h2>
     <input type="text" id="username" placeholder="Username">
@@ -96,26 +149,40 @@
     <button class="login-button" onclick="login()">Login</button>
 </div>
 
+<!-- Home Page Content (After Login) -->
+<div class="home-page" id="home-page">
+    <div class="nav-bar">
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+    </div>
+    <h1>Welcome to Your Dashboard!</h1>
+    <p>You're successfully logged in. Explore your personalized features.</p>
+    <button onclick="exploreMore()">Explore More</button>
+</div>
+
 <script>
     function login() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         var loginFrame = document.getElementById("login-frame");
-        var homeButton = document.getElementById("homeButton");
+        var homePage = document.getElementById("home-page");
 
+        // Check if both username and password are filled
         if (username && password) {
-            // Smoothly hide the login frame
-            loginFrame.style.opacity = 0; // Fade the login frame
+            // Smoothly disappear the login frame
+            loginFrame.style.opacity = 0;
             setTimeout(function() {
-                loginFrame.style.display = "none"; // Completely hide the login frame
-                homeButton.style.display = "block"; // Show the Home button
-            }, 500); // Wait for fade effect to finish
+                loginFrame.style.display = "none";
+                // Show the home page after login
+                homePage.style.display = "block";
+            }, 500); // Matches the transition time for smooth effect
         }
     }
 
-    // Function to go home (you can modify this to add navigation functionality)
-    function goHome() {
-        alert("Going Home...");
+    function exploreMore() {
+        alert('Exploring more...');
     }
 </script>
 
