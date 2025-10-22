@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Purple Glass Login</title>
+<title>Purple Glass Login System</title>
 <style>
     * {
         margin: 0;
@@ -21,34 +21,39 @@
         overflow: hidden;
     }
 
-    /* Floating animation */
     @keyframes float {
         0% { transform: translateY(0px); }
         50% { transform: translateY(-10px); }
         100% { transform: translateY(0px); }
     }
 
-    .login-container {
+    .frame {
         width: 350px;
         padding: 40px;
         border-radius: 15px;
-        background: rgba(120, 40, 180, 0.25); /* purple tinted glass */
+        background: rgba(120, 40, 180, 0.25);
         box-shadow: 0 0 30px rgba(130, 50, 255, 0.5), 0 8px 32px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.2);
         text-align: center;
         animation: float 4s ease-in-out infinite;
+        color: #fff;
+        display: none;
     }
 
-    .login-container h2 {
+    .active {
+        display: block;
+    }
+
+    h2 {
         color: #f2e8ff;
         margin-bottom: 25px;
         font-size: 28px;
         text-shadow: 0 0 10px rgba(200, 150, 255, 0.8);
     }
 
-    .login-container input {
+    input {
         width: 100%;
         padding: 12px;
         margin: 10px 0;
@@ -60,11 +65,11 @@
         font-size: 15px;
     }
 
-    .login-container input::placeholder {
+    input::placeholder {
         color: #ddd;
     }
 
-    .login-container button {
+    button {
         width: 100%;
         padding: 12px;
         margin-top: 15px;
@@ -79,37 +84,118 @@
         box-shadow: 0 0 10px rgba(160, 80, 255, 0.6);
     }
 
-    .login-container button:hover {
+    button:hover {
         transform: translateY(-2px);
         box-shadow: 0 0 20px rgba(190, 120, 255, 0.8);
     }
 
-    .login-container p {
+    p {
         color: #ddd;
         font-size: 14px;
         margin-top: 15px;
     }
 
-    .login-container a {
+    a {
         color: #d6b3ff;
         text-decoration: none;
         font-weight: bold;
     }
 
-    .login-container a:hover {
+    a:hover {
         text-decoration: underline;
+    }
+
+    .error {
+        color: #ff9b9b;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .success {
+        color: #baffb3;
+        margin-top: 10px;
+        font-size: 14px;
     }
 </style>
 </head>
 <body>
 
-<div class="login-container">
+<!-- LOGIN FRAME -->
+<div class="frame active" id="loginFrame">
     <h2>Login</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button>Login</button>
-    <p>Don't have an account? <a href="#">Sign up</a></p>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
+    <div id="loginMsg"></div>
 </div>
+
+<!-- SIGNUP FRAME -->
+<div class="frame" id="signupFrame">
+    <h2>Sign Up</h2>
+    <input type="text" id="newUser" placeholder="Create Username">
+    <input type="password" id="newPass" placeholder="Create Password">
+    <button onclick="signup()">Create Account</button>
+    <p>Already have an account? <a href="#" onclick="showLogin()">Go back</a></p>
+    <div id="signupMsg"></div>
+</div>
+
+<script>
+    const loginFrame = document.getElementById('loginFrame');
+    const signupFrame = document.getElementById('signupFrame');
+    const loginMsg = document.getElementById('loginMsg');
+    const signupMsg = document.getElementById('signupMsg');
+
+    // Save users in memory (can be changed to localStorage)
+    let users = {};
+
+    function showSignup() {
+        loginFrame.classList.remove('active');
+        signupFrame.classList.add('active');
+        loginMsg.innerHTML = "";
+    }
+
+    function showLogin() {
+        signupFrame.classList.remove('active');
+        loginFrame.classList.add('active');
+        signupMsg.innerHTML = "";
+    }
+
+    function signup() {
+        const username = document.getElementById('newUser').value.trim();
+        const password = document.getElementById('newPass').value.trim();
+
+        if (username === "" || password === "") {
+            signupMsg.innerHTML = `<p class="error">Please fill all fields</p>`;
+            return;
+        }
+
+        if (users[username]) {
+            signupMsg.innerHTML = `<p class="error">Username already exists</p>`;
+        } else {
+            users[username] = password;
+            signupMsg.innerHTML = `<p class="success">Account created! You can now login</p>`;
+            setTimeout(() => showLogin(), 1200);
+        }
+    }
+
+    function login() {
+        const username = document.getElementById('loginUser').value.trim();
+        const password = document.getElementById('loginPass').value.trim();
+
+        if (!users[username]) {
+            loginMsg.innerHTML = `<p class="error">User "${username}" doesn't exist</p>`;
+            return;
+        }
+
+        if (users[username] !== password) {
+            loginMsg.innerHTML = `<p class="error">Password and Username don't match</p>`;
+            return;
+        }
+
+        loginMsg.innerHTML = `<p class="success">Login successful!</p>`;
+    }
+</script>
 
 </body>
 </html>
