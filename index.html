@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Page</title>
+<title>Purple Glass Login</title>
 <style>
     * {
         margin: 0;
@@ -18,24 +18,34 @@
         justify-content: center;
         align-items: center;
         background: url("https://images.unsplash.com/photo-1489781879256-fa824b56f24f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFpbiUyMHJhaW5kcm9wJTIwYmx1cnxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000") no-repeat center center/cover;
+        overflow: hidden;
+    }
+
+    /* Floating animation */
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
     }
 
     .login-container {
         width: 350px;
         padding: 40px;
         border-radius: 15px;
-        background: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(120, 40, 180, 0.25); /* purple tinted glass */
+        box-shadow: 0 0 30px rgba(130, 50, 255, 0.5), 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         text-align: center;
+        animation: float 4s ease-in-out infinite;
     }
 
     .login-container h2 {
-        color: #fff;
+        color: #f2e8ff;
         margin-bottom: 25px;
         font-size: 28px;
+        text-shadow: 0 0 10px rgba(200, 150, 255, 0.8);
     }
 
     .login-container input {
@@ -44,7 +54,7 @@
         margin: 10px 0;
         border: none;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.15);
         color: #fff;
         outline: none;
         font-size: 15px;
@@ -58,28 +68,30 @@
         width: 100%;
         padding: 12px;
         margin-top: 15px;
-        background: rgba(255, 255, 255, 0.3);
+        background: linear-gradient(135deg, #a45de8, #7b3fe0);
         border: none;
         border-radius: 8px;
         color: #fff;
         font-size: 16px;
         font-weight: bold;
         cursor: pointer;
-        transition: background 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 10px rgba(160, 80, 255, 0.6);
     }
 
     .login-container button:hover {
-        background: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba(190, 120, 255, 0.8);
     }
 
     .login-container p {
-        color: #ccc;
+        color: #ddd;
         font-size: 14px;
         margin-top: 15px;
     }
 
     .login-container a {
-        color: #fff;
+        color: #d6b3ff;
         text-decoration: none;
         font-weight: bold;
     }
