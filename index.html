@@ -27,6 +27,11 @@
         100% { transform: translateY(0px); }
     }
 
+    @keyframes fadeOut {
+        from { opacity: 1; transform: scale(1); }
+        to { opacity: 0; transform: scale(0.9); }
+    }
+
     .frame {
         width: 350px;
         padding: 40px;
@@ -116,6 +121,16 @@
         margin-top: 10px;
         font-size: 14px;
     }
+
+    /* Welcome frame */
+    #welcomeFrame {
+        display: none;
+        color: #fff;
+        text-align: center;
+        font-size: 24px;
+        text-shadow: 0 0 15px rgba(200,150,255,0.7);
+        animation: float 4s ease-in-out infinite;
+    }
 </style>
 </head>
 <body>
@@ -140,14 +155,20 @@
     <div id="signupMsg"></div>
 </div>
 
+<!-- WELCOME FRAME -->
+<div id="welcomeFrame">
+    <h2>Welcome Back!</h2>
+    <p>You are now logged in ✨</p>
+</div>
+
 <script>
     const loginFrame = document.getElementById('loginFrame');
     const signupFrame = document.getElementById('signupFrame');
+    const welcomeFrame = document.getElementById('welcomeFrame');
     const loginMsg = document.getElementById('loginMsg');
     const signupMsg = document.getElementById('signupMsg');
 
-    // Save users in memory (can be changed to localStorage)
-    let users = {};
+    let users = {}; // stored in memory
 
     function showSignup() {
         loginFrame.classList.remove('active');
@@ -171,7 +192,7 @@
         }
 
         if (users[username]) {
-            signupMsg.innerHTML = `<p class="error">Username already exists</p>`;
+            signupMsg.innerHTML = `<p class="error">Username is Taken</p>`;
         } else {
             users[username] = password;
             signupMsg.innerHTML = `<p class="success">Account created! You can now login</p>`;
@@ -193,7 +214,13 @@
             return;
         }
 
+        // success
         loginMsg.innerHTML = `<p class="success">Login successful!</p>`;
+        loginFrame.style.animation = "fadeOut 0.7s forwards";
+        setTimeout(() => {
+            loginFrame.style.display = "none";
+            welcomeFrame.style.display = "block";
+        }, 700);
     }
 </script>
 
