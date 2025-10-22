@@ -1,220 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D GitHub-like Page</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
-        body {
-            background-color: #121212;  /* Dark background */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            perspective: 1200px; /* 3D perspective */
-            overflow: hidden;
-            position: relative;
-            color: #fff;
-        }
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("https://images.unsplash.com/photo-1489781879256-fa824b56f24f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFpbiUyMHJhaW5kcm9wJTIwYmx1cnxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000") no-repeat center center/cover;
+    }
 
-        .scene {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transform-style: preserve-3d;
-            animation: rotateScene 15s infinite linear;
-            position: relative;
-        }
+    .login-container {
+        width: 350px;
+        padding: 40px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        text-align: center;
+    }
 
-        .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transform-style: preserve-3d;
-            transform: translateZ(120px);
-        }
+    .login-container h2 {
+        color: #fff;
+        margin-bottom: 25px;
+        font-size: 28px;
+    }
 
-        .profile, .repos, .footer {
-            width: 260px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 10px;
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transform-style: preserve-3d;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .login-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        outline: none;
+        font-size: 15px;
+    }
 
-        .profile img {
-            width: 80px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
+    .login-container input::placeholder {
+        color: #ddd;
+    }
 
-        .profile:hover img {
-            transform: scale(1.1);
-        }
+    .login-container button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
 
-        .repos ul {
-            list-style: none;
-            padding: 0;
-        }
+    .login-container button:hover {
+        background: rgba(255, 255, 255, 0.5);
+    }
 
-        .repos li {
-            margin: 8px 0;
-            font-size: 16px;
-        }
+    .login-container p {
+        color: #ccc;
+        font-size: 14px;
+        margin-top: 15px;
+    }
 
-        .repos:hover {
-            transform: translateZ(30px);
-        }
+    .login-container a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-        .footer {
-            background-color: #0366d6;
-            color: white;
-            border-radius: 15px;
-            margin-top: 20px;
-            font-size: 14px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .footer:hover {
-            transform: translateZ(30px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes rotateScene {
-            0% {
-                transform: rotateY(0deg);
-            }
-            100% {
-                transform: rotateY(360deg);
-            }
-        }
-
-        /* Static dot background with a smoother look */
-        .dots {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-content: space-between;
-            opacity: 0.1;  /* Make the dots more subtle */
-        }
-
-        .dot {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            animation: moveDots 30s infinite ease-in-out;
-        }
-
-        /* Randomize the positions and opacity of dots on page load */
-        .dot:nth-child(odd) {
-            opacity: 0.2;
-            animation-duration: 25s;
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .dot:nth-child(even) {
-            opacity: 0.3;
-            animation-duration: 35s;
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        /* Adjust dot movement */
-        @keyframes moveDots {
-            0% {
-                transform: translate3d(-10vw, -10vh, 0);
-            }
-            50% {
-                transform: translate3d(30vw, 20vh, 0);
-            }
-            100% {
-                transform: translate3d(60vw, 60vh, 0);
-            }
-        }
-
-    </style>
+    .login-container a:hover {
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
-    <!-- Static Dots Background -->
-    <div class="dots">
-        <!-- The dots will be placed directly on page load -->
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
 
-    <div class="scene">
-        <div class="content">
-            <!-- Profile Section -->
-            <div class="profile">
-                <img src="https://avatars.githubusercontent.com/u/9919?v=4" alt="Profile Image">
-                <h1>John Doe</h1>
-                <p>@johndoe</p>
-            </div>
+<div class="login-container">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+    <p>Don't have an account? <a href="#">Sign up</a></p>
+</div>
 
-            <!-- Repositories Section -->
-            <div class="repos">
-                <h2>Repositories</h2>
-                <ul>
-                    <li>Awesome Project</li>
-                    <li>Another Repo</li>
-                    <li>My Open Source Work</li>
-                    <li>Portfolio Site</li>
-                </ul>
-            </div>
-
-            <!-- Footer Section -->
-            <div class="footer">
-                <p>© 2025 John Doe | All Rights Reserved</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Generate a specific number of dots already present when page loads
-        const dotContainer = document.querySelector('.dots');
-
-        // Create a function to add random position and animation to the dots
-        for (let i = 0; i < 30; i++) {  // 30 dots as an example
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            const size = Math.random() * 8 + 5; // Random size between 5px and 13px
-            dot.style.width = `${size}px`;
-            dot.style.height = `${size}px`;
-            dot.style.top = `${Math.random() * 100}vh`; // Random top position
-            dot.style.left = `${Math.random() * 100}vw`; // Random left position
-            dotContainer.appendChild(dot);
-        }
-    </script>
 </body>
 </html>
